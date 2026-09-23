@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" modified="2026-09-23T12:00:00.000Z" agent="Codex" version="25.0.3" type="device">
+  <diagram id="wine-inference-red001" name="Inferencia red-001">
+    <mxGraphModel dx="1900" dy="1050" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1050" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="bg" value="#FFFFFF" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="1900" height="1050" as="geometry"/>
+        </mxCell>
+        <mxCell id="title" value="&lt;b&gt;Inferencia reproducible · Wine Quality&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;fontSize=31;fontColor=#15324B;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="70" y="35" width="1200" height="64" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="Checkpoint 2 · Recorrido de la muestra &lt;b&gt;red-001&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;fontSize=18;fontColor=#526577;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="72" y="98" width="1000" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="tag" value="CSV → contrato → vector ordenado → modelo → predicción" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=#EEF4FA;strokeColor=#C8D7E6;fontColor=#15324B;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="54" width="560" height="52" as="geometry"/>
+        </mxCell>
+        <mxCell id="csv" value="&lt;div style=&quot;font-size:15px;color:#DCEBFA;font-weight:bold;letter-spacing:1px&quot;&gt;ENTRADA&lt;/div&gt;&lt;div style=&quot;font-size:25px;color:#FFFFFF;font-weight:bold;margin-top:10px&quot;&gt;CSV&lt;/div&gt;&lt;div style=&quot;font-size:16px;color:#FFFFFF;margin-top:12px&quot;&gt;&lt;b&gt;red-001&lt;/b&gt;&lt;br&gt;1 fila · 12 columnas&lt;/div&gt;" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Arial;align=center;verticalAlign=middle;shadow=1;fillColor=#15324B;strokeColor=#15324B;" vertex="1" parent="1">
+          <mxGeometry x="65" y="280" width="210" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="contract" value="&lt;div style=&quot;font-size:15px;color:#D9E8F8;font-weight:bold;letter-spacing:1px&quot;&gt;FRONTERA DE ENTRADA&lt;/div&gt;&lt;div style=&quot;font-size:23px;color:#FFFFFF;font-weight:bold;margin:7px&quot;&gt;Validar contrato&lt;/div&gt;&lt;div style=&quot;font-size:15px;color:#FFFFFF;line-height:1.35;text-align:left&quot;&gt;• Columnas exactas: &lt;b&gt;sample_id&lt;/b&gt; + 11 features&lt;br&gt;• &lt;b&gt;sample_id&lt;/b&gt; obligatorio y no vacío&lt;br&gt;• Features numéricas y dentro de sus rangos&lt;br&gt;• Rechazar cualquier columna adicional&lt;/div&gt;" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Arial;align=center;verticalAlign=middle;shadow=1;fillColor=#2457A7;strokeColor=#2457A7;" vertex="1" parent="1">
+          <mxGeometry x="345" y="235" width="365" height="255" as="geometry"/>
+        </mxCell>
+        <mxCell id="vector" value="&lt;div style=&quot;font-size:15px;color:#D7EFED;font-weight:bold;letter-spacing:1px&quot;&gt;PREPROCESADO&lt;/div&gt;&lt;div style=&quot;font-size:22px;color:#FFFFFF;font-weight:bold;margin:5px&quot;&gt;Vector ordenado · 11 valores&lt;/div&gt;&lt;div style=&quot;font-size:15px;color:#FFFFFF;line-height:1.42;text-align:left&quot;&gt;1&amp;nbsp; fixed_acidity&lt;br&gt;2&amp;nbsp; volatile_acidity&lt;br&gt;3&amp;nbsp; citric_acid&lt;br&gt;4&amp;nbsp; residual_sugar&lt;br&gt;5&amp;nbsp; chlorides&lt;br&gt;6&amp;nbsp; free_sulfur_dioxide&lt;br&gt;7&amp;nbsp; total_sulfur_dioxide&lt;br&gt;8&amp;nbsp; density&lt;br&gt;9&amp;nbsp; ph&lt;br&gt;10&amp;nbsp; sulphates&lt;br&gt;11&amp;nbsp; alcohol&lt;/div&gt;" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Arial;align=center;verticalAlign=middle;shadow=1;fillColor=#15817A;strokeColor=#15817A;" vertex="1" parent="1">
+          <mxGeometry x="775" y="195" width="440" height="450" as="geometry"/>
+        </mxCell>
+        <mxCell id="model" value="&lt;div style=&quot;font-size:15px;color:#FCE6DA;font-weight:bold;letter-spacing:1px&quot;&gt;INFERENCIA&lt;/div&gt;&lt;div style=&quot;font-size:25px;color:#FFFFFF;font-weight:bold;margin-top:10px&quot;&gt;Modelo&lt;/div&gt;&lt;div style=&quot;font-size:16px;color:#FFFFFF;margin-top:12px&quot;&gt;Clasificador&lt;br&gt;calidad del vino&lt;/div&gt;" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Arial;align=center;verticalAlign=middle;shadow=1;fillColor=#D86C32;strokeColor=#D86C32;" vertex="1" parent="1">
+          <mxGeometry x="1290" y="285" width="205" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="output" value="&lt;div style=&quot;font-size:15px;color:#DDF1E5;font-weight:bold;letter-spacing:1px&quot;&gt;SALIDA TRAZABLE&lt;/div&gt;&lt;div style=&quot;font-size:22px;color:#FFFFFF;font-weight:bold;margin:6px&quot;&gt;Predicción&lt;/div&gt;&lt;div style=&quot;font-size:15px;color:#FFFFFF;line-height:1.38;text-align:left&quot;&gt;&lt;b&gt;sample_id&lt;/b&gt;: red-001&lt;br&gt;&lt;b&gt;quality_band&lt;/b&gt;: needs_review&lt;br&gt;&lt;b&gt;confidence&lt;/b&gt;: 0.77&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px&quot;&gt;model_version&lt;br&gt;preprocessing_version&lt;/span&gt;&lt;/div&gt;" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Arial;align=center;verticalAlign=middle;shadow=1;fillColor=#2E7D55;strokeColor=#2E7D55;" vertex="1" parent="1">
+          <mxGeometry x="1570" y="245" width="265" height="270" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#36566F;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1" source="csv" target="contract">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#36566F;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1" source="contract" target="vector">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#36566F;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1" source="vector" target="model">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#36566F;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1" source="model" target="output">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="idcard" value="&lt;div style=&quot;font-size:14px;color:#604B12;font-weight:bold;letter-spacing:.5px&quot;&gt;TRAZABILIDAD · NO ES FEATURE&lt;/div&gt;&lt;div style=&quot;font-size:19px;color:#3C3216;margin-top:8px&quot;&gt;&lt;b&gt;sample_id = red-001&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;font-size:14px;color:#604B12;margin-top:4px&quot;&gt;Identifica la fila; se conserva para asociar la predicción.&lt;/div&gt;" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=#FFF6D9;strokeColor=#E4C45D;strokeWidth=2;fontFamily=Arial;align=left;verticalAlign=middle;spacingLeft=18;spacingRight=12;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="65" y="555" width="340" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#C79A19;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="csv" target="idcard">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#C79A19;strokeWidth=2;dashed=1;endArrow=block;endFill=1;exitX=1;exitY=1;entryX=0.5;entryY=1;" edge="1" parent="1" source="idcard" target="output">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="720"/>
+              <mxPoint x="1700" y="720"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="reject" value="&lt;div style=&quot;font-size:15px;color:#8D3434;font-weight:bold;letter-spacing:.5px&quot;&gt;CAMPO DESCONOCIDO&lt;/div&gt;&lt;div style=&quot;font-size:16px;color:#592828;margin-top:7px&quot;&gt;&lt;b&gt;unexpected_field&lt;/b&gt; → error de validación&lt;br&gt;Se detiene antes del vector y no hay predicción.&lt;/div&gt;" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=#FFF0EF;strokeColor=#D9918D;strokeWidth=2;fontFamily=Arial;align=left;verticalAlign=middle;spacingLeft=18;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="735" width="500" height="105" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#B54747;strokeWidth=2;dashed=1;endArrow=block;endFill=1;exitX=0.55;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="contract" target="reject">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="validnote" value="Validación previa a inferencia · los límites físicos definidos por el contrato se aplican campo a campo." style="text;html=1;align=center;verticalAlign=middle;fontSize=16;fontColor=#526577;fontFamily=Arial;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="760" width="730" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="footer" value="El identificador viaja con la muestra hasta la salida; el clasificador recibe únicamente las 11 medidas en el orden esperado." style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#F3F7FA;strokeColor=#DCE5EC;fontColor=#526577;fontSize=15;fontFamily=Arial;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="65" y="910" width="1770" height="42" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
