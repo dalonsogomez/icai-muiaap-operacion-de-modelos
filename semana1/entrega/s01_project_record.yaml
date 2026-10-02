@@ -1,5 +1,4 @@
-# Ficha de entrega. Métricas locales: smoke test del 2026-10-02. La evidencia
-# cloud procede del Git Folder en tareas-semana1. Ver 02_evidencia_databricks.md.
+# Ficha única de la entrega. Los IDs cloud corresponden a ejecuciones reales; no contiene secretos.
 project:
   name: clasificacion_wine_quality_didactica
   team_alias: equipo-01
@@ -17,57 +16,81 @@ data:
     test_rows: 172
     random_state: 42
   limitations:
-    - Clases extremas minoritarias; F1 macro bajo.
-    - Procedencia y muestra no representan toda la produccion vinicola.
-    - No autoriza decisiones comerciales.
+  - Clases extremas minoritarias; F1 macro bajo.
+  - Procedencia y muestra no representan toda la produccion vinicola.
+  - No autoriza decisiones comerciales.
 local_smoke_test:
   command: uv run --no-project --with pandas==2.2.3 --with scikit-learn==1.9.0 --with xgboost==3.0.5 tools/local_wine_training.py
   candidate_count: 7
   gate_minimum_validation_f1_macro: 0.28
   gate_passed_count: 6
   candidates:
-    - {name: extra_trees_600_leaf_1, validation_f1_macro: 0.3065, validation_accuracy: 0.6453, gate_passed: true}
-    - {name: extra_trees_300_leaf_2, validation_f1_macro: 0.3047, validation_accuracy: 0.6512, gate_passed: true}
-    - {name: extra_trees_600_leaf_2, validation_f1_macro: 0.3024, validation_accuracy: 0.6512, gate_passed: true}
-    - {name: extra_trees_300_leaf_1, validation_f1_macro: 0.2969, validation_accuracy: 0.6337, gate_passed: true}
-    - {name: extra_trees_300_leaf_3, validation_f1_macro: 0.2911, validation_accuracy: 0.6337, gate_passed: true}
-    - {name: extra_trees_600_leaf_3, validation_f1_macro: 0.2850, validation_accuracy: 0.6337, gate_passed: true}
-    - {name: xgboost_hist, validation_f1_macro: 0.2684, validation_accuracy: 0.5930, gate_passed: false}
+  - name: extra_trees_600_leaf_1
+    validation_f1_macro: 0.3065
+    validation_accuracy: 0.6453
+    gate_passed: true
+  - name: extra_trees_300_leaf_2
+    validation_f1_macro: 0.3047
+    validation_accuracy: 0.6512
+    gate_passed: true
+  - name: extra_trees_600_leaf_2
+    validation_f1_macro: 0.3024
+    validation_accuracy: 0.6512
+    gate_passed: true
+  - name: extra_trees_300_leaf_1
+    validation_f1_macro: 0.2969
+    validation_accuracy: 0.6337
+    gate_passed: true
+  - name: extra_trees_300_leaf_3
+    validation_f1_macro: 0.2911
+    validation_accuracy: 0.6337
+    gate_passed: true
+  - name: extra_trees_600_leaf_3
+    validation_f1_macro: 0.285
+    validation_accuracy: 0.6337
+    gate_passed: true
+  - name: xgboost_hist
+    validation_f1_macro: 0.2684
+    validation_accuracy: 0.593
+    gate_passed: false
   winner: extra_trees_600_leaf_1
   validation_f1_macro: 0.3065
   validation_recall_macro: 0.3079
   test_f1_macro: 0.3293
-  test_recall_macro: 0.3260
+  test_recall_macro: 0.326
   test_used_for_selection: false
 databricks_evidence:
   status: verificado_en_git_folder_tareas-semana1
-  provenance: Git Folder en tareas-semana1, commit 77cbc78, ejecutado el 2026-10-02
+  provenance: Git Folder tareas-semana1, commit a5e9a6e; Jobs run 93662289745255 (SUCCESS), 2026-10-03
   experiment_name: 01_tracking_mlops
   experiment_url: https://dbc-6a116e70-0ef4.cloud.databricks.com/ml/experiments/3572941977725124/runs?o=7474651922184125
   experiment_id: '3572941977725124'
-  batch_id: bd8c6a4c
+  batch_id: 0bfa11d4
   run_student_alias: equipo-01
   selection_gate:
     minimum_validation_f1_macro: 0.28
-    ranking: [validation.f1_macro DESC, validation.accuracy DESC, validation.latency_ms_per_row ASC]
+    ranking:
+    - validation.f1_macro DESC
+    - validation.accuracy DESC
+    - validation.latency_ms_per_row ASC
     test_used_for_selection: false
   candidate_run_ids:
-    extra_trees_300_leaf_1: 82d6ba07dd0f44e3ac4ad39a46672a9c
-    extra_trees_600_leaf_1: ae65de9e36904542b49c61e77620185b
-    extra_trees_300_leaf_2: de052d2066314af49ab3bce67662b798
-    extra_trees_600_leaf_2: 31eb2ffd0c894d77ab4d2c79ab3d7d7d
-    extra_trees_300_leaf_3: 9f06eecf6e944671aeb3c6fc0e53847f
-    extra_trees_600_leaf_3: 3236a71b39b5449f9ed6e9d3d1d86154
-    xgboost_hist: 2c60020868f5440eb7b220e53d95c002
-  winner_run_id: ae65de9e36904542b49c61e77620185b
+    xgboost_hist: e549bdc887804c7daf994bf01fd02955
+    extra_trees_600_leaf_3: 6a91d9782a2e4d43b1868ae6c201f8da
+    extra_trees_300_leaf_3: 8d746ffa6dbc45d78b2f4edfcf9c2b4a
+    extra_trees_600_leaf_2: 85730d1c0c4d4a8299d13e6cd97f966f
+    extra_trees_300_leaf_2: e5c14f6c079849068c9660796d58a8d5
+    extra_trees_600_leaf_1: 46a52bcee5844a0aa1fd9826f71dc064
+    extra_trees_300_leaf_1: 6800e8b2111149ab8cffc57472c086e3
+  winner_run_id: 46a52bcee5844a0aa1fd9826f71dc064
   winner_validation_f1_macro: 0.3053074737662099
   winner_validation_recall_macro: 0.3079409340576702
   winner_test_f1_macro: 0.32456162551830897
   winner_test_recall_macro: 0.3212111328549685
   test_used_once_after_selection: true
   registered_model: workspace.default.wine_quality_classifier_equipo_01
-  rollback_version: 1
-  champion_version: 2
+  rollback_version: 3
+  champion_version: 4
   alias: Champion
   model_signature_present: true
   registry_sequence:
@@ -76,11 +99,19 @@ databricks_evidence:
     rollback_to_version_1_verified: true
     repromotion_to_version_2_verified: true
     evidence: notebook 01_tracking_mlops, celda Registry con aserciones ejecutadas
-  deployment_run_id: 8885559a4fa6499db1a70296356a262f
-  api_statuses: {health: 200, valid_prediction: 200, invalid_contract: 400, non_object_json: 400}
-  api_requests: {total: 4, success: 2, rejected: 2, error: 0}
-  api_mean_latency_ms: 89.97034475000021
-  api_max_latency_ms: 359.3895889999885
+  deployment_run_id: 0e971b10d1094b869f86dc0e08c995de
+  api_statuses:
+    health: 200
+    valid_prediction: 200
+    invalid_contract: 400
+    non_object_json: 400
+  api_requests:
+    total: 4
+    success: 2
+    rejected: 2
+    error: 0
+  api_mean_latency_ms: 34.731786500003636
+  api_max_latency_ms: 138.0100809999476
   api_public: false
   api_persistent: false
   api_stopped: true
@@ -88,6 +119,7 @@ databricks_evidence:
   comparison_screenshot: capturas/01b_siete_candidatos.jpg
   catalog_screenshot: capturas/02a_registry_sin_puntero.jpg
   api_screenshot: capturas/03a_api_sin_puntero.jpg
+  job_run_id: 93662289745255
 agentops_evidence:
   status: verificado_en_git_folder_tareas-semana1
   experiment_id: '3572941977725126'
@@ -111,40 +143,42 @@ agentops_evidence:
     observed_case: Pregunta sobre diagnostico clinico de la traza OK documentada.
     first_step_to_inspect: route_question; debe seleccionar risk para preguntas clinicas.
     second_step_to_inspect: retrieve_course_context; debe devolver el limite de uso clinico.
-    reason: Distingue un fallo de enrutamiento de un contexto recuperado incorrecto antes de revisar la respuesta final.
+    reason: Distingue un fallo de enrutamiento de un contexto recuperado incorrecto antes de revisar la
+      respuesta final.
   scorer_case:
     question: ¿Qué objeto agrupa varios runs?
     expected_phrase: experimento
     result: contains_expected_phrase aprobado en la evaluacion de ocho casos
-    limitation: Aprobar por la palabra experimento no comprueba que la explicacion sea verdadera o no esté negada.
+    limitation: Aprobar por la palabra experimento no comprueba que la explicacion sea verdadera o no
+      esté negada.
 risks:
-  - id: R1
-    priority: 1
-    risk: Prediccion presentada como garantia comercial.
-    impact: high
-    owner: equipo_de_producto
-    mitigation: Limitar el caso a docencia y exigir validacion externa.
-  - id: R2
-    priority: 2
-    risk: Secretos o datos sensibles persistidos en runs o trazas.
-    impact: high
-    owner: responsable_tecnico
-    mitigation: No registrar credenciales, PII ni payloads; revisar evidencia antes de compartir.
-  - id: R3
-    priority: 3
-    risk: Diferencia de transformaciones entre entrenamiento e inferencia.
-    impact: high
-    owner: ml_engineer
-    mitigation: Servir el mismo Pipeline y probar el contrato HTTP.
+- id: R1
+  priority: 1
+  risk: Prediccion presentada como garantia comercial.
+  impact: high
+  owner: equipo_de_producto
+  mitigation: Limitar el caso a docencia y exigir validacion externa.
+- id: R2
+  priority: 2
+  risk: Secretos o datos sensibles persistidos en runs o trazas.
+  impact: high
+  owner: responsable_tecnico
+  mitigation: No registrar credenciales, PII ni payloads; revisar evidencia antes de compartir.
+- id: R3
+  priority: 3
+  risk: Diferencia de transformaciones entre entrenamiento e inferencia.
+  impact: high
+  owner: ml_engineer
+  mitigation: Servir el mismo Pipeline y probar el contrato HTTP.
 verification:
   completed:
-    - 'python3 tools/validate_semana1.py: 7 README, 4 notebooks JSON validos y dataset presente'
-    - 'Git Folder serverless: CSV leido y 7 candidatos registrados en el lote bd8c6a4c'
-    - 'API local: health 200, predict 200, contratos invalidos 400/400 y servidor apagado'
-    - 'VS Code 1.140.0: notebook abierto con extensiones Python y Jupyter instaladas'
-    - 'Postman Desktop 12.29.2: GET https://postman-echo.com/get devolvio 200 OK en 137 ms'
+  - 'python3 tools/validate_semana1.py: 7 README, 4 notebooks JSON validos y dataset presente'
+  - 'Git Folder serverless: CSV leido y 7 candidatos registrados en el lote 0bfa11d4'
+  - 'API local: health 200, predict 200, contratos invalidos 400/400 y servidor apagado'
+  - 'VS Code 1.140.0: notebook abierto con extensiones Python y Jupyter instaladas'
+  - 'Postman Desktop 12.29.2: GET https://postman-echo.com/get devolvio 200 OK en 137 ms'
   pending:
-    - Docker daemon no activo; comprobacion no bloqueante de S1.1.
+  - Docker daemon no activo; comprobacion no bloqueante de S1.1.
   limits:
-    - No se ha verificado acceso del profesor al workspace personal; los enlaces cloud requieren permiso.
-    - No se ha desplegado una URL publica ni un servicio persistente; no lo exige la practica.
+  - No se ha verificado acceso del profesor al workspace personal; los enlaces cloud requieren permiso.
+  - No se ha desplegado una URL publica ni un servicio persistente; no lo exige la practica.
