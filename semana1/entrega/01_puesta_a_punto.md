@@ -7,7 +7,7 @@ Comprobado el 2 de octubre de 2026 en macOS `arm64`:
 | `uv` y Python 3.12 | `uv 0.12.9`; `uv run --no-project --python 3.12 python --version` devuelve `Python 3.12.13`. |
 | Git e identidad | `git version 2.56.0`; nombre y correo configurados localmente, sin publicarlos aquí. |
 | GitHub y repositorio | `git ls-remote` accede al fork `dalonsogomez/icai-muiaap-operacion-de-modelos`. |
-| Databricks Free Edition | Git Folder de `tareas-semana1` y compute serverless comprobados mediante la ejecución completa de los notebooks; lote de tracking `bd8c6a4c`. |
+| Databricks Free Edition | Git Folder de `tareas-semana1` y compute serverless comprobados mediante la ejecución completa de los notebooks; lote de tracking `0bfa11d4`. |
 | Dataset | `semana1/data/raw/WineQT.csv` fue leído por el notebook en serverless y produjo siete runs; también existe en el checkout y pasa el smoke test local. |
 | Editor y notebooks | Visual Studio Code 1.140.0 abre `01_tracking_mlops.ipynb` como notebook; extensiones `ms-python.python` y `ms-toolsai.jupyter` instaladas. |
 | `curl` y Postman | `curl 8.7.1` devuelve 200 para `https://postman-echo.com/get`; Postman Desktop 12.29.2 devolvió `200 OK` para `GET https://postman-echo.com/get` (137 ms). |
