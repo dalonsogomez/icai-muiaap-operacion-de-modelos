@@ -22,19 +22,14 @@ alumno y requieren acceso a él. Los identificadores se contrastaron mediante la
 | `xgboost_hist` | [`e549bdc887804c7daf994bf01fd02955`](https://dbc-6a116e70-0ef4.cloud.databricks.com/ml/experiments/3572941977725124/runs/e549bdc887804c7daf994bf01fd02955?o=7474651922184125) |
 
 El ganador [`46a52bcee5844a0aa1fd9826f71dc064`](https://dbc-6a116e70-0ef4.cloud.databricks.com/ml/experiments/3572941977725124/runs/46a52bcee5844a0aa1fd9826f71dc064?o=7474651922184125) está marcado `selection.status=winner` y `selection.test_used_once=true`.
-Su F1 macro de validación es `0.3053074737662099`; la de test, evaluado
-después de elegirlo, es `0.32456162551830897`.
+En validación obtuvo F1 macro `0.3053074737662099` y recall macro `0.3079409340576702`. En test, evaluado después de elegirlo, obtuvo F1 macro `0.32456162551830897` y recall macro `0.3212111328549685`.
 
 En [Catalog Explorer](https://dbc-6a116e70-0ef4.cloud.databricks.com/explore/data/models/workspace/default/wine_quality_classifier_equipo_01?o=7474651922184125), el modelo
 `workspace.default.wine_quality_classifier_equipo_01` contiene cuatro versiones históricas; las versiones del lote actual son dos (3 y 4). La versión 3 es la referencia de rollback y la
 [versión 4](https://dbc-6a116e70-0ef4.cloud.databricks.com/explore/data/models/workspace/default/wine_quality_classifier_equipo_01/version/4?o=7474651922184125)
 procede del run ganador y muestra los alias `@challenger` y `@champion`.
 
-**Captura del filtro del lote nuevo pendiente de renovar.**
-
-**Captura de los siete candidatos del lote nuevo pendiente de renovar.**
-
-**Captura del lote nuevo pendiente de renovar:** la imagen existente corresponde al lote anterior y no acredita las versiones 3 y 4.
+**Pendientes:** captura de comparación de los siete candidatos filtrados por `batch.id=0bfa11d4` en Experiments y captura del modelo con `Champion` v4 en Catalog Explorer. Las imágenes del lote anterior no acreditan estos resultados.
 
 ## API local de la práctica
 
@@ -48,11 +43,9 @@ media `34.731786500003636 ms` y máxima `138.0100809999476 ms`.
 
 El propio artefacto identifica el servicio como `local_notebook_http`, con
 `public_endpoint=false` y `persistent=false`. El artefacto `governance/s01_project_record.yaml` del run de deployment y la salida final del notebook confirman
-`api_stopped=true`. La captura acredita las pruebas
-registradas, **no** que exista ahora un endpoint público ni que el servidor
-efímero siga en funcionamiento.
+`api_stopped=true`. Esta evidencia acredita las pruebas registradas y el apagado del servidor efímero.
 
-El artefacto del run y las salidas del notebook acreditan las pruebas del lote nuevo; la imagen anterior se renovará antes de cerrar la entrega.
+El artefacto del run y las salidas del notebook acreditan las pruebas del lote nuevo.
 
 ## AgentOps y evaluación
 
@@ -66,19 +59,14 @@ En el [experimento `02_agent_llmops`](https://dbc-6a116e70-0ef4.cloud.databricks
 Son comprobaciones heurísticas sobre un agente determinista, con `USE_LLM=False`.
 La puntuación perfecta no demuestra corrección clínica ni seguridad general.
 
-La captura de la traza ERROR del lote anterior no se utiliza como prueba de este lote.
-
-La captura de trazas OK del lote anterior no se utiliza como prueba de este lote.
-
-La captura de evaluación del lote anterior no se utiliza como prueba de este lote; el run se verificó por API.
+El estado de las trazas `OK` y `ERROR` se comprobó en la API de MLflow. Las imágenes del lote anterior no se usan como prueba de esta ejecución.
 
 ## Notebooks ejecutados y correspondencia con las guías
 
 Los notebooks conservan las salidas de los Jobs de Databricks, reconstruidas desde el modelo de ejecución de `jobs export-run`, sin reutilizar las salidas de un lote anterior. Se conservaron en sus rutas
 originales: [`01_tracking_mlops.ipynb`](../modules/01-mlflow-databricks-foundations/notebooks/01_tracking_mlops.ipynb)
 y [`02_agent_llmops.ipynb`](../modules/01-mlflow-databricks-foundations/notebooks/02_agent_llmops.ipynb).
-Las 21 celdas de código de Tracking y las 7 de AgentOps tienen `execution_count`. Ninguna tiene una salida de tipo `error`; el `KeyError` de AgentOps fue esperado, capturado y quedó registrado como traza `ERROR`. Las celdas que sólo importan o definen funciones no
-producen una salida visible.
+Las 21 celdas de código de Tracking y las 7 de AgentOps tienen `execution_count`. Ninguna tiene una salida de tipo `error`; el `KeyError` de AgentOps fue esperado, capturado y quedó registrado como traza `ERROR`. Las celdas que sólo importan o definen funciones no producen una salida visible.
 
 | Indicación del ejercicio | Evidencia verificable |
 | --- | --- |
@@ -88,6 +76,8 @@ producen una salida visible.
 | Registry y ciclo de alias | Celdas 31–33; versiones 3 y 4, `Challenger`, `Champion`, rollback a 3 y re-promoción a 4. |
 | API local y run de observabilidad | Celdas 35–45; cuatro respuestas HTTP, contadores `4/2/2/0` y apagado verificado. |
 | Trazas anidadas, tags, fallo y ocho evaluaciones | Celdas 6–14 de AgentOps; experimento `3572941977725126`, trazas OK/ERROR y run `bc543f9cd83d42e78d7fc4ce50e205b2`. |
+
+La ficha YAML completa también se registró como artefacto `governance/s01_project_record.yaml` del run de evaluación `bc543f9cd83d42e78d7fc4ce50e205b2`.
 
 El gate propuesto para una segunda versión es mantener
 `safety_refusal/mean = 1.0` en los casos críticos y revisar manualmente sus
