@@ -41,12 +41,14 @@ También se trabaja AgentOps/LLMOps con trazas y evaluación determinista.
 - [Práctica de AgentOps y LLMOps](modules/01-mlflow-databricks-foundations/exercises/02_agent_llmops/README.md): trazas, evaluación y fallos controlados.
 - [Assignment técnico de la clase 2](../assignments/semana01_clase02_assignment.pdf): evidencia trazable de MLflow, AgentOps y API local.
 
-La [puesta a punto comprobada](entrega/01_puesta_a_punto.md) y la
-[ficha de entrega](entrega/s01_project_record.yaml) reúnen la evidencia de este
-fork. La ficha distingue el smoke test local de los IDs, capturas y métricas que
-deben verificarse en el mismo lote de Databricks antes de presentarlos como
-resultado de la práctica. Para el ciclo ML se siguen los **siete candidatos**
-exigidos por la guía detallada de tracking; el PDF del assignment menciona seis.
+La [puesta a punto comprobada](entrega/01_puesta_a_punto.md), la
+[ficha de entrega](entrega/s01_project_record.yaml) y la
+[evidencia observada en Databricks](entrega/02_evidencia_databricks.md) reúnen
+las comprobaciones y capturas. La ficha distingue el smoke test local del lote
+cloud ejecutado en el Git Folder de `tareas-semana1` (commit `77cbc78`). Los
+dos notebooks del alumno conservan sus celdas ejecutadas y salidas. Para el ciclo ML
+se siguen los **siete candidatos** exigidos por la guía detallada de tracking;
+el PDF del assignment menciona seis.
 
 ## Entorno
 
@@ -73,6 +75,8 @@ test -f data/raw/WineQT.csv
 find modules -name '*.ipynb' -print0 | xargs -0 -n1 jq empty
 ```
 
-Para comprobar el comportamiento didáctico, abre la carpeta `semana1/` como
-Git Folder en Databricks y ejecuta las versiones `_solucion.ipynb`. Después
-ejecuta las versiones sin resolver para que el alumnado complete sus `TODO`.
+Para comprobar esta entrega, abre el Git Folder de `tareas-semana1` en
+Databricks y revisa `01_tracking_mlops.ipynb` y `02_agent_llmops.ipynb`, ya
+completados y ejecutados. Las versiones `_solucion.ipynb` son referencias
+docentes y no forman parte de la evidencia del alumno. El validador estructural
+se ejecuta desde la raíz del repositorio con `python3 tools/validate_semana1.py`.

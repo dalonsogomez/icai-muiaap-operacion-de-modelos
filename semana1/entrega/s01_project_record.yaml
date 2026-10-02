@@ -1,6 +1,5 @@
-# Ficha de entrega. Las métricas locales proceden del smoke test reproducido el
-# 2026-10-02 con tools/local_wine_training.py. Los campos cloud sólo se rellenan
-# con IDs y métricas verificados en Databricks para un único batch.id.
+# Ficha de entrega. Métricas locales: smoke test del 2026-10-02. La evidencia
+# cloud procede del Git Folder en tareas-semana1. Ver 02_evidencia_databricks.md.
 project:
   name: clasificacion_wine_quality_didactica
   team_alias: equipo-01
@@ -41,28 +40,51 @@ local_smoke_test:
   test_recall_macro: 0.3260
   test_used_for_selection: false
 databricks_evidence:
-  status: pendiente_de_verificacion_del_lote_actual
-  experiment_id: null
-  batch_id: null
-  candidate_run_ids: []
-  winner_run_id: null
-  registered_model: null
-  rollback_version: null
-  champion_version: null
-  alias: null
-  deployment_run_id: null
-  api_statuses: null
-  api_stopped: null
-  comparison_screenshot: null
-  catalog_screenshot: null
+  status: verificado_en_git_folder_tareas-semana1
+  provenance: Git Folder en tareas-semana1, commit 77cbc78, ejecutado el 2026-10-02
+  experiment_id: '3572941977725124'
+  batch_id: bd8c6a4c
+  run_student_alias: equipo-01
+  candidate_run_ids:
+    extra_trees_300_leaf_1: 82d6ba07dd0f44e3ac4ad39a46672a9c
+    extra_trees_600_leaf_1: ae65de9e36904542b49c61e77620185b
+    extra_trees_300_leaf_2: de052d2066314af49ab3bce67662b798
+    extra_trees_600_leaf_2: 31eb2ffd0c894d77ab4d2c79ab3d7d7d
+    extra_trees_300_leaf_3: 9f06eecf6e944671aeb3c6fc0e53847f
+    extra_trees_600_leaf_3: 3236a71b39b5449f9ed6e9d3d1d86154
+    xgboost_hist: 2c60020868f5440eb7b220e53d95c002
+  winner_run_id: ae65de9e36904542b49c61e77620185b
+  winner_validation_f1_macro: 0.3053074737662099
+  winner_test_f1_macro: 0.32456162551830897
+  test_used_once_after_selection: true
+  registered_model: workspace.default.wine_quality_classifier_equipo_01
+  rollback_version: 1
+  champion_version: 2
+  alias: Champion
+  deployment_run_id: 8885559a4fa6499db1a70296356a262f
+  api_statuses: {health: 200, valid_prediction: 200, invalid_contract: 400, non_object_json: 400}
+  api_requests: {total: 4, success: 2, rejected: 2, error: 0}
+  api_mean_latency_ms: 89.97034475000021
+  api_public: false
+  api_persistent: false
+  api_stopped: true
+  comparison_filter_screenshot: capturas/01a_filtro_comparacion.jpg
+  comparison_screenshot: capturas/01b_siete_candidatos.jpg
+  catalog_screenshot: capturas/02a_registry_sin_puntero.jpg
+  api_screenshot: capturas/03a_api_sin_puntero.jpg
 agentops_evidence:
-  status: pendiente_de_verificacion_del_lote_actual
-  trace_ok_id: null
-  trace_error_id: null
-  evaluation_run_id: null
-  contains_expected_phrase_mean: null
-  safety_refusal_mean: null
-  response_is_concise_mean: null
+  status: verificado_en_git_folder_tareas-semana1
+  experiment_id: '3572941977725126'
+  trace_ok_id: tr-6a92f9061dabe442382db5e14875009e
+  trace_error_id: tr-ccdb0f0f4ac9350ce8812b38050066c1
+  evaluation_run_id: 8a9fc4ca7abb45d1bd311dedf1d931ea
+  evaluation_cases: 8
+  contains_expected_phrase_mean: 1.0
+  safety_refusal_mean: 1.0
+  response_is_concise_mean: 1.0
+  trace_error_screenshot: capturas/04a_traza_error.jpg
+  traces_ok_screenshot: capturas/04b_trazas_ok.jpg
+  evaluation_screenshot: capturas/05a_evaluacion_sin_puntero.jpg
   proposed_gate: safety_refusal_mean == 1.0 y revision humana de casos criticos
   scorer_limitations:
     contains_expected_phrase: Una frase esperada puede aparecer negada o fuera de contexto.

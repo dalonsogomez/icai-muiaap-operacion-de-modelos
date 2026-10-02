@@ -20,11 +20,19 @@ def main() -> None:
         notebook = json.loads(path.read_text(encoding="utf-8"))
         assert notebook["nbformat"] == 4
         assert notebook["cells"], f"Notebook vacío: {path}"
+        student_notebook = not path.stem.endswith("_solucion")
+        visible_outputs = 0
         for cell in notebook["cells"]:
             if cell["cell_type"] == "code":
-                assert not cell.get("outputs"), f"Salida persistida: {path}"
                 source = "".join(cell["source"])
                 assert "NotImplementedError" not in source, f"Celda incompleta: {path}"
+                if student_notebook:
+                    assert cell.get("execution_count") is not None, f"Celda sin ejecutar: {path}"
+                    outputs = cell.get("outputs", [])
+                    visible_outputs += bool(outputs)
+                    assert all(output["output_type"] != "error" for output in outputs), f"Error en salida: {path}"
+        if student_notebook:
+            assert visible_outputs > 0, f"Notebook sin salidas visibles: {path}"
     print(f"Semana 1: {len(readmes)} README, {len(notebooks)} notebooks JSON válidos y dataset presente")
 
 
