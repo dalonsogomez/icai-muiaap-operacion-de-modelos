@@ -41,6 +41,13 @@ También se trabaja AgentOps/LLMOps con trazas y evaluación determinista.
 - [Práctica de AgentOps y LLMOps](modules/01-mlflow-databricks-foundations/exercises/02_agent_llmops/README.md): trazas, evaluación y fallos controlados.
 - [Assignment técnico de la clase 2](../assignments/semana01_clase02_assignment.pdf): evidencia trazable de MLflow, AgentOps y API local.
 
+La [puesta a punto comprobada](entrega/01_puesta_a_punto.md) y la
+[ficha de entrega](entrega/s01_project_record.yaml) reúnen la evidencia de este
+fork. La ficha distingue el smoke test local de los IDs, capturas y métricas que
+deben verificarse en el mismo lote de Databricks antes de presentarlos como
+resultado de la práctica. Para el ciclo ML se siguen los **siete candidatos**
+exigidos por la guía detallada de tracking; el PDF del assignment menciona seis.
+
 ## Entorno
 
 Las prácticas están diseñadas para abrirse como Git Folder en Databricks Free
