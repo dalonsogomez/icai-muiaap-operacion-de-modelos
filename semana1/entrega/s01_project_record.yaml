@@ -115,24 +115,17 @@ databricks_evidence:
   api_public: false
   api_persistent: false
   api_stopped: true
-  comparison_filter_screenshot: capturas/01a_filtro_comparacion.jpg
-  comparison_screenshot: capturas/01b_siete_candidatos.jpg
-  catalog_screenshot: capturas/02a_registry_sin_puntero.jpg
-  api_screenshot: capturas/03a_api_sin_puntero.jpg
   job_run_id: 93662289745255
 agentops_evidence:
   status: verificado_en_git_folder_tareas-semana1
   experiment_id: '3572941977725126'
-  trace_ok_id: tr-6a92f9061dabe442382db5e14875009e
-  trace_error_id: tr-ccdb0f0f4ac9350ce8812b38050066c1
-  evaluation_run_id: 8a9fc4ca7abb45d1bd311dedf1d931ea
+  trace_ok_id: tr-42df544991d015f9562647d01febda27
+  trace_error_id: tr-a777f66c0dce67b2583d65f312aa172b
+  evaluation_run_id: bc543f9cd83d42e78d7fc4ce50e205b2
   evaluation_cases: 8
   contains_expected_phrase_mean: 1.0
   safety_refusal_mean: 1.0
   response_is_concise_mean: 1.0
-  trace_error_screenshot: capturas/04a_traza_error.jpg
-  traces_ok_screenshot: capturas/04b_trazas_ok.jpg
-  evaluation_screenshot: capturas/05a_evaluacion_sin_puntero.jpg
   proposed_gate: safety_refusal_mean == 1.0 y revision humana de casos criticos
   scorer_limitations:
     contains_expected_phrase: Una frase esperada puede aparecer negada o fuera de contexto.
@@ -151,6 +144,8 @@ agentops_evidence:
     result: contains_expected_phrase aprobado en la evaluacion de ocho casos
     limitation: Aprobar por la palabra experimento no comprueba que la explicacion sea verdadera o no
       esté negada.
+  provenance: Databricks Jobs run 454297630848090 (SUCCESS), 2026-10-03
+  job_run_id: 454297630848090
 risks:
 - id: R1
   priority: 1
@@ -177,8 +172,25 @@ verification:
   - 'API local: health 200, predict 200, contratos invalidos 400/400 y servidor apagado'
   - 'VS Code 1.140.0: notebook abierto con extensiones Python y Jupyter instaladas'
   - 'Postman Desktop 12.29.2: GET https://postman-echo.com/get devolvio 200 OK en 137 ms'
+  - 'AgentOps: 8 casos, trazas OK/ERROR y tres medias 1.0 en el run bc543f9cd83d42e78d7fc4ce50e205b2'
   pending:
   - Docker daemon no activo; comprobacion no bloqueante de S1.1.
+  - 'Renovar dos capturas obligatorias del lote 0bfa11d4: Experiments y Catalog Explorer, sin aviso de
+    automatizacion ni puntero.'
   limits:
   - No se ha verificado acceso del profesor al workspace personal; los enlaces cloud requieren permiso.
   - No se ha desplegado una URL publica ni un servicio persistente; no lo exige la practica.
+execution:
+  environment: Databricks Free Edition, Git Folder tareas-semana1, serverless Jobs
+  commands_and_results:
+  - command: databricks jobs submit --json @/tmp/semana1-tracking-job.json --profile semana1 --no-wait
+    result: Job 93662289745255 SUCCESS; batch.id=0bfa11d4; 7 candidatos, 1 ganador, Registry v3/v4 y API
+      200/200/400/400
+  - command: databricks jobs submit --json @/tmp/semana1-agentops-job.json --profile semana1 --no-wait
+    result: Job 454297630848090 SUCCESS; 8 casos, traza OK, traza ERROR y tres scorers con media 1.0
+  - command: databricks model-versions get-by-alias workspace.default.wine_quality_classifier_equipo_01
+      Champion --profile semana1
+    result: Champion = versión 4, run 46a52bcee5844a0aa1fd9826f71dc064
+  - command: databricks experiments list-artifacts --run-id bc543f9cd83d42e78d7fc4ce50e205b2 --path governance
+      --profile semana1
+    result: governance/s01_project_record.yaml existe en el run de evaluación
